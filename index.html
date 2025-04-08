@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirect de Mercado Libre</title>
+</head>
+<body>
+    <h2>Autenticación completada</h2>
+    <p id="mensaje">Extrayendo código...</p>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+
+        if (code) {
+            document.getElementById('mensaje').innerHTML = `
+                <strong>Código recibido:</strong><br>
+                <textarea rows="3" cols="60" readonly>${code}</textarea><br><br>
+                Copialo y usalo en tu script.
+            `;
+            console.log("CODE =", code);
+        } else {
+            document.getElementById('mensaje').textContent = "No se recibió ningún código.";
+        }
+    </script>
+</body>
+</html>
